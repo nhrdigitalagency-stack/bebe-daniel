@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="18" fill="#FFF5FA"/>
+  <rect x="2" y="2" width="60" height="60" rx="16" stroke="#FFCCE5" stroke-width="2"/>
+  <text x="30" y="45" text-anchor="middle" font-family="Georgia, 'Cormorant Garamond', serif" font-size="36" font-weight="600" fill="#392B33">D</text>
+  <circle cx="44" cy="43" r="3.5" fill="#FF007F"/>
+</svg>

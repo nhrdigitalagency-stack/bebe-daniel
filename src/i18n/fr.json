@@ -1,0 +1,394 @@
+{
+  "meta": {
+    "title": "Le Voir bébé de Daniel — Un petit être, un immense bonheur",
+    "description": "Nous avons la joie de vous inviter à un moment de tendresse et de partage pour vous présenter bébé Daniel. Consultez les informations et confirmez votre présence.",
+    "eventName": "Le Voir bébé de Daniel",
+    "signature": "Un petit être, un immense bonheur."
+  },
+  "nav": {
+    "home": "Accueil",
+    "invitation": "Notre invitation",
+    "schedule": "Programme",
+    "practical": "Infos pratiques",
+    "memories": "Souvenirs",
+    "sharePhotos": "Partager des photos",
+    "rsvpCta": "Confirmer ma présence",
+    "openMenu": "Ouvrir le menu de navigation",
+    "closeMenu": "Fermer le menu de navigation",
+    "switchLanguage": "Changer la langue",
+    "shareInvitation": "Partager l’invitation",
+    "linkCopied": "Lien de l’invitation copié"
+  },
+  "hero": {
+    "kicker": "Une belle rencontre se prépare",
+    "title": "Venez rencontrer bébé Daniel",
+    "subtitle": "Un petit être, un immense bonheur.",
+    "description": "Nous avons la joie de vous inviter à un moment de tendresse et de partage pour vous présenter Daniel, entourés de nos familles, de nos amis et de ceux qui nous sont chers.",
+    "primaryCta": "Confirmer ma présence",
+    "secondaryCta": "Découvrir la cérémonie",
+    "visualCaption": "Bienvenue dans notre histoire de famille",
+    "portraitAlt": "Tendresse autour de bébé Daniel",
+    "abstractNote": "Première rencontre en douceur"
+  },
+  "invitation": {
+    "kicker": "Notre invitation",
+    "title": "Un bonheur à partager",
+    "body": "Depuis son arrivée, Daniel remplit notre quotidien de douceur. Nous souhaitons partager ce bonheur avec vous et créer ensemble les premiers souvenirs d’une belle histoire de famille.",
+    "parentsPrefix": "Avec toute la tendresse de",
+    "whatIsTitle": "Qu’est-ce que le « Voir bébé » ?",
+    "whatIsBody": "Le « Voir bébé » est un moment convivial et chaleureux au cours duquel les parents présentent leur enfant à leurs familles, leurs amis et leurs proches, tout simplement autour de sourires, d’échanges et de douceur.",
+    "cards": {
+      "meet": {
+        "index": "01. Une rencontre",
+        "title": "Une rencontre",
+        "description": "Découvrir le doux visage de Daniel et lui souhaiter la bienvenue entourés de bienveillance."
+      },
+      "family": {
+        "index": "02. Un moment en famille",
+        "title": "Un moment en famille",
+        "description": "Se retrouver entre proches dans une atmosphère paisible, chaleureuse et sincère."
+      },
+      "memories": {
+        "index": "03. Des souvenirs à garder",
+        "title": "Des souvenirs à garder",
+        "description": "Partager des sourires, des vœux et quelques clichés précieux que Daniel découvrira en grandissant."
+      }
+    }
+  },
+  "countdown": {
+    "title": "Rendez-vous pour la rencontre",
+    "noDate": "La date de notre rencontre sera communiquée prochainement.",
+    "pastEvent": "Merci du fond du cœur d’avoir partagé ce merveilleux moment avec nous et bébé Daniel.",
+    "days": "Jours",
+    "hours": "Heures",
+    "minutes": "Minutes",
+    "seconds": "Secondes"
+  },
+  "schedule": {
+    "kicker": "Déroulement",
+    "title": "Les temps doux de la journée",
+    "unconfirmedNotice": "Programme à confirmer",
+    "unconfirmedSubtext": "Les horaires précis seront ajoutés dès que les détails de la journée seront arrêtés.",
+    "steps": {
+      "welcome": {
+        "title": "Accueil des proches",
+        "description": "Arrivée tout en douceur, retrouvailles et premiers sourires autour d’une boisson rafraîchissante."
+      },
+      "presentation": {
+        "title": "Présentation de Daniel",
+        "description": "Le moment tant attendu pour faire connaissance avec bébé Daniel dans une ambiance sereine."
+      },
+      "gathering": {
+        "title": "Moment convivial",
+        "description": "Collation gourmande, discussions en famille et échanges chaleureux entre amis et proches."
+      },
+      "memories": {
+        "title": "Photos et souvenirs",
+        "description": "Quelques photos de famille et petits mots doux pour garder une trace précieuse de cette rencontre."
+      }
+    }
+  },
+  "practical": {
+    "kicker": "Informations pratiques",
+    "title": "Préparer votre venue",
+    "subtitle": "Toutes les informations utiles pour nous rejoindre en toute sérénité.",
+    "toBeConfirmed": "À confirmer",
+    "dateLabel": "Date",
+    "timeLabel": "Heure",
+    "venueLabel": "Lieu de réception",
+    "addressLabel": "Adresse",
+    "dressCodeLabel": "Tenue souhaitée",
+    "accessLabel": "Accès & précisions",
+    "openDirections": "Ouvrir l’itinéraire",
+    "directionsUnavailable": "Itinéraire disponible dès confirmation de l’adresse",
+    "addToCalendar": "Ajouter à mon agenda (.ics)",
+    "calendarUnavailable": "Agenda disponible dès confirmation de la date",
+    "calendarEventTitle": "Le Voir bébé de Daniel",
+    "calendarEventDescription": "Présentation de bébé Daniel entourés de nos familles, amis et proches."
+  },
+  "rsvp": {
+    "kicker": "Confirmation de présence",
+    "title": "Serez-vous des nôtres ?",
+    "subtitle": "Merci de nous indiquer votre réponse afin que nous puissions vous accueillir dans les meilleures conditions.",
+    "firstNameLabel": "Prénom *",
+    "firstNamePlaceholder": "Votre prénom",
+    "lastNameLabel": "Nom (facultatif)",
+    "lastNamePlaceholder": "Votre nom de famille",
+    "attendanceLabel": "Votre présence *",
+    "attendanceYes": "Oui, avec joie",
+    "attendanceNo": "Non, malheureusement",
+    "attendanceMaybe": "Peut-être (à confirmer)",
+    "attendanceValueYes": "Oui",
+    "attendanceValueNo": "Non",
+    "attendanceValueMaybe": "Peut-être",
+    "additionalAdultsLabel": "Adultes accompagnants (hors vous)",
+    "childrenLabel": "Enfants accompagnants",
+    "dietaryLabel": "Préférences ou allergies alimentaires (facultatif)",
+    "dietaryPlaceholder": "Végétarien, sans arachides, etc.",
+    "messageLabel": "Petit mot pour les parents et Daniel (facultatif)",
+    "messagePlaceholder": "Un message de tendresse ou une précision...",
+    "submitWhatsapp": "Continuer sur WhatsApp",
+    "whatsappDisclaimer": "Votre réponse sera préparée dans WhatsApp. Appuyez sur Envoyer pour la transmettre aux parents.",
+    "copyFallbackButton": "Copier le message (secours)",
+    "copiedSuccess": "Message copié dans le presse-papiers. Vous pouvez le coller dans WhatsApp au {{phone}}.",
+    "openedInfo": "WhatsApp s’est ouvert avec votre message pré-rempli. N’oubliez pas d’appuyer sur « Envoyer » dans l’application.",
+    "errors": {
+      "firstNameRequired": "Veuillez renseigner votre prénom pour préparer votre réponse.",
+      "adultsLimit": "Le nombre d’adultes accompagnants doit être compris entre 0 et {{max}}.",
+      "childrenLimit": "Le nombre d’enfants accompagnants doit être compris entre 0 et {{max}}."
+    },
+    "whatsappTemplate": {
+      "intro": "Bonjour, voici ma réponse pour le Voir bébé de Daniel.",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "attendance": "Présence",
+      "adults": "Adultes accompagnants",
+      "children": "Enfants accompagnants",
+      "dietary": "Préférences alimentaires",
+      "message": "Message"
+    }
+  },
+  "memoriesPreview": {
+    "kicker": "Album familial",
+    "title": "Les souvenirs de la rencontre",
+    "beforeEvent": "Les souvenirs de cette belle journée trouveront bientôt leur place ici.",
+    "afterEvent": "Revivons ensemble les premiers souvenirs de cette rencontre.",
+    "viewGalleryCta": "Découvrir la galerie",
+    "addPhotosCta": "Ajouter mes photos",
+    "privacyBadge": "Espace familial modéré par les parents · Sans indexation publique"
+  },
+  "faq": {
+    "kicker": "Questions fréquentes",
+    "title": "Tout savoir en douceur",
+    "items": [
+      {
+        "q": "En quoi consiste le « Voir bébé » ?",
+        "a": "C’est une rencontre conviviale et familiale durant laquelle nous avons le plaisir de vous présenter bébé Daniel, d’échanger et de partager un moment chaleureux ensemble."
+      },
+      {
+        "q": "Où et quand a lieu la cérémonie ?",
+        "a": "La rencontre aura lieu le dimanche 1er novembre 2026 à partir de 14h00 au domicile de Marie et Joseph, au quartier Simbock à Yaoundé. Vous pouvez ouvrir l’itinéraire ou ajouter l’événement à votre agenda directement depuis la rubrique « Infos pratiques »."
+      },
+      {
+        "q": "Comment confirmer ma présence ?",
+        "a": "Remplissez simplement le formulaire de confirmation ci-dessus puis appuyez sur « Continuer sur WhatsApp ». Votre message sera préparé automatiquement : il vous suffira d’appuyer sur Envoyer dans WhatsApp."
+      },
+      {
+        "q": "Comment partager les photos prises pendant la rencontre ?",
+        "a": "Après la cérémonie, les parents ouvriront l’espace « Partager des photos » accessible avec le code familial. Chaque photo est vérifiée par les parents avant d’apparaître dans la galerie."
+      },
+      {
+        "q": "Les photos de l’album sont-elles visibles par tout le monde ?",
+        "a": "Non. L’album n’est pas indexé par les moteurs de recherche, les métadonnées GPS sont retirées lors de l’envoi, et seules les photos validées par les parents sont consultables."
+      }
+    ]
+  },
+  "contact": {
+    "kicker": "Contact & vœux",
+    "title": "Écrire aux parents",
+    "description": "Une question pratique ou l’envie d’adresser un mot doux à la famille de Daniel ? Préparez votre message sur WhatsApp.",
+    "senderNameLabel": "Votre prénom *",
+    "senderNamePlaceholder": "Votre prénom",
+    "senderMessageLabel": "Votre message *",
+    "senderMessagePlaceholder": "Écrivez votre question ou vos vœux pour Daniel...",
+    "sendWhatsappCta": "Préparer dans WhatsApp",
+    "copyMessageCta": "Copier le texte",
+    "directPhoneLabel": "Contact WhatsApp direct :",
+    "errors": {
+      "nameRequired": "Veuillez indiquer votre prénom.",
+      "messageRequired": "Veuillez saisir votre message."
+    },
+    "whatsappHeader": "Bonjour, message concernant le Voir bébé de Daniel :"
+  },
+  "gallery": {
+    "kicker": "Galerie de souvenirs",
+    "title": "Souvenirs du Voir bébé de Daniel",
+    "beforeOpening": "Les souvenirs de cette belle journée trouveront bientôt leur place ici.",
+    "afterCeremony": "Revivons ensemble les premiers souvenirs de cette rencontre.",
+    "addPhotosCta": "Ajouter mes photos",
+    "backHome": "Retour à l’invitation",
+    "backendNotConfiguredTitle": "Album en attente de configuration serveur",
+    "backendNotConfiguredBody": "Le stockage sécurisé Supabase n’est pas encore relié à cet environnement. Dès que les parents auront connecté l’album, les photos approuvées s’afficheront ici de façon permanente.",
+    "closedNoticeTitle": "Galerie bientôt ouverte",
+    "closedNoticeBody": "Les parents ouvriront l’album de souvenirs après la cérémonie, dès que les premières photos auront été triées et validées.",
+    "familyCodeTitle": "Accès réservé aux proches",
+    "familyCodeDescription": "Veuillez saisir le code d’invitation familial communiqué par les parents pour consulter les souvenirs.",
+    "familyCodeLabel": "Code familial",
+    "familyCodePlaceholder": "Ex. DANIEL...",
+    "unlockGalleryCta": "Accéder aux souvenirs",
+    "emptyApproved": "Aucune photo approuvée n’a encore été publiée pour le moment. Vous pouvez proposer vos souvenirs via le bouton « Ajouter mes photos ».",
+    "loading": "Chargement des souvenirs en cours...",
+    "errorLoading": "Impossible de récupérer les photos pour le moment. Veuillez réessayer.",
+    "retry": "Réessayer",
+    "loadMore": "Afficher plus de souvenirs",
+    "sharedBy": "Partagé par {{name}}",
+    "anonymousContributor": "Un proche de la famille",
+    "screenCaptureNotice": "Par respect pour Daniel et nos proches : merci de ne pas republier ces photos sur les réseaux sociaux. Notez qu’une image affichée à l’écran ne peut jamais être protégée de manière absolue contre les captures ou copies.",
+    "requestRemovalCta": "Demander le retrait d’une photo",
+    "lightbox": {
+      "close": "Fermer l’aperçu (Échap)",
+      "previous": "Photo précédente",
+      "next": "Photo suivante",
+      "counter": "Photo {{current}} sur {{total}}",
+      "requestRemovalThisPhoto": "Signaler ou demander le retrait de cette photo"
+    }
+  },
+  "upload": {
+    "kicker": "Partager vos clichés",
+    "title": "Ajouter mes photos de la rencontre",
+    "subtitle": "Partagez vos plus beaux instants du Voir bébé de Daniel. Chaque photo sera examinée par les parents avant d’être visible dans la galerie.",
+    "backToGallery": "Voir la galerie",
+    "notConfiguredBannerTitle": "L’album photo n’est pas encore configuré",
+    "notConfiguredBannerBody": "Le service de stockage sécurisé (Supabase) n’est pas encore connecté. Aucun envoi n’est simulé afin de garantir qu’aucune photo ne soit perdue. Les parents activeront ce dépôt dès que le serveur sera prêt.",
+    "closedBannerTitle": "Les contributions ne sont pas encore ouvertes",
+    "closedBannerBody": "Le dépôt de photos est actuellement fermé. Les parents l’activeront après la cérémonie.",
+    "familyCodeLabel": "Code d’invitation familial *",
+    "familyCodePlaceholder": "Code communiqué par les parents",
+    "verifyCodeCta": "Vérifier le code",
+    "codeVerifiedBadge": "Code familial vérifié",
+    "contributorNameLabel": "Votre prénom ou pseudonyme *",
+    "contributorNamePlaceholder": "Ex. Tante Clara, Marc...",
+    "captionLabel": "Légende ou souvenir associé (facultatif)",
+    "captionPlaceholder": "Un mot sur ce moment...",
+    "displayNameConsentLabel": "J’accepte que mon prénom soit affiché sous mes photos dans l’album familial.",
+    "publicationConsentLabel": "J’accepte que ces photos soient publiées dans l’album privé de l’événement après validation par les parents. *",
+    "rightsReminder": "Rappel bienveillant : merci de partager uniquement des images que vous êtes autorisé(e) à transmettre et qui respectent l’intimité des personnes présentes.",
+    "dropzoneTitle": "Glissez-déposez vos photos ici, ou appuyez pour sélectionner",
+    "dropzoneSpecs": "Formats acceptés : JPEG, PNG, WebP · Maximum {{maxFiles}} photos par envoi · {{maxSize}} Mo max par photo.",
+    "heicNotice": "Format HEIC (iPhone) non pris en charge directement : si vos photos sont au format .heic, merci de les exporter en JPEG ou de choisir « Le plus compatible » dans vos réglages Appareil photo.",
+    "selectFilesButton": "Choisir des photos",
+    "selectedCount": "{{count}} / {{max}} photo(s) sélectionnée(s)",
+    "removeFile": "Retirer cette photo",
+    "submitButton": "Envoyer mes photos aux parents",
+    "uploadingButton": "Transfert sécurisé en cours...",
+    "retryFailedButton": "Réessayer les fichiers en échec",
+    "successMessage": "Vos photos ont été reçues. Elles seront visibles après validation par les parents.",
+    "partialErrorMessage": "Certaines photos ont été reçues, mais {{failed}} fichier(s) n’ont pas pu être transférés. Vous pouvez réessayer.",
+    "status": {
+      "ready": "Prêt pour l’envoi",
+      "uploading": "Envoi et nettoyage EXIF...",
+      "success": "Reçue par le serveur",
+      "error": "Échec de l’envoi"
+    },
+    "errors": {
+      "codeRequired": "Veuillez saisir le code d’invitation familial.",
+      "codeInvalid": "Le code familial saisi est incorrect.",
+      "nameRequired": "Veuillez indiquer votre prénom ou pseudonyme.",
+      "consentRequired": "Vous devez accepter la publication dans l’album de l’événement.",
+      "noFiles": "Veuillez sélectionner au moins une photo.",
+      "tooManyFiles": "Vous pouvez envoyer au maximum {{max}} photos à la fois.",
+      "heicRejected": "Le fichier « {{name}} » est au format HEIC/HEIF. Veuillez l’exporter en JPEG avant de l’envoyer.",
+      "unsupportedFormat": "Le fichier « {{name}} » n’est pas un format d’image pris en charge (JPEG, PNG ou WebP uniquement).",
+      "fileTooLarge": "Le fichier « {{name}} » dépasse la limite de {{max}} Mo.",
+      "duplicateFile": "La photo « {{name}} » est déjà présente dans votre sélection.",
+      "imageDimensionsTooLarge": "Les dimensions de « {{name}} » sont trop importantes (maximum 8000 × 8000 px).",
+      "serverNotConfigured": "Le stockage serveur n’est pas configuré. Envoi impossible."
+    }
+  },
+  "admin": {
+    "kicker": "Administration sécurisée",
+    "title": "Espace des parents de Daniel",
+    "subtitle": "Modération des photos, ouverture de l’album et personnalisation des informations de la cérémonie.",
+    "notConfiguredTitle": "Connexion Supabase requise pour l’administration",
+    "notConfiguredBody": "Pour activer l’authentification des parents, la base PostgreSQL et le stockage privé des photos, renseignez les variables SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, VITE_SUPABASE_URL et VITE_SUPABASE_ANON_KEY (voir supabase/README.md).",
+    "loginTitle": "Connexion administrateur",
+    "loginSubtitle": "Accès strictement réservé aux parents de Daniel (authentification vérifiée côté serveur).",
+    "emailLabel": "Adresse e-mail administrateur",
+    "passwordLabel": "Mot de passe",
+    "loginButton": "Se connecter",
+    "loggingIn": "Vérification en cours...",
+    "logoutButton": "Se déconnecter",
+    "tabs": {
+      "pending": "En attente ({{count}})",
+      "approved": "Approuvées ({{count}})",
+      "rejected": "Refusées ({{count}})",
+      "settings": "Paramètres & Code familial"
+    },
+    "actions": {
+      "approve": "Approuver",
+      "reject": "Refuser",
+      "delete": "Supprimer définitivement",
+      "confirmDeleteTitle": "Confirmer la suppression définitive ?",
+      "confirmDeleteBody": "Cette action supprimera définitivement le fichier image, sa miniature et ses métadonnées du stockage privé.",
+      "cancel": "Annuler",
+      "confirmDeleteButton": "Oui, supprimer",
+      "editCaption": "Modifier la légende",
+      "saveCaption": "Enregistrer",
+      "cleanupOrphans": "Nettoyer les soumissions orphelines"
+    },
+    "settings": {
+      "albumStatusTitle": "Ouverture de l’album et des contributions",
+      "galleryOpenLabel": "Rendre la galerie des photos approuvées visible aux proches",
+      "submissionsOpenLabel": "Autoriser les invités à envoyer leurs photos (/partager-des-photos)",
+      "requireCodeGalleryLabel": "Demander le code familial pour consulter la galerie",
+      "requireCodeUploadLabel": "Demander le code familial pour envoyer des photos",
+      "closeDateLabel": "Date de fermeture automatique des contributions (facultatif)",
+      "retentionDaysLabel": "Durée de conservation indicative des photos (en jours)",
+      "familyCodeSectionTitle": "Code d’invitation familial (chiffré côté serveur)",
+      "newFamilyCodeLabel": "Nouveau code familial (laisser vide pour conserver l’actuel)",
+      "newFamilyCodePlaceholder": "Ex. BIENVENUEDANIEL",
+      "eventDetailsSectionTitle": "Informations de la cérémonie (« À confirmer » si vide)",
+      "parentsNamesLabel": "Prénoms des parents (séparés par une virgule)",
+      "eventStartLabel": "Date et heure de début",
+      "eventEndLabel": "Date et heure de fin",
+      "timeZoneLabel": "Fuseau horaire (ex. Europe/Paris)",
+      "venueNameLabel": "Nom du lieu",
+      "addressLabel": "Adresse complète",
+      "mapsUrlLabel": "Lien Google Maps / Itinéraire",
+      "dressCodeLabel": "Dress code / Tenue souhaitée",
+      "accessNotesLabel": "Informations d’accès (digicode, parking, etc.)",
+      "portraitUrlLabel": "Photo du Hero (choisir un portrait ou laisser vide pour la composition typographique)",
+      "saveSettingsButton": "Enregistrer les paramètres",
+      "savingSettings": "Enregistrement...",
+      "settingsSaved": "Les paramètres ont été enregistrés avec succès."
+    },
+    "emptyState": "Aucune photo dans cette catégorie pour le moment."
+  },
+  "privacy": {
+    "kicker": "Protection de l’enfance & vie privée",
+    "title": "Notice de confidentialité de l’album familial",
+    "subtitle": "Parce qu’il s’agit des premiers souvenirs de bébé Daniel, cet espace a été conçu avec une attention particulière portée à la discrétion familiale.",
+    "sections": {
+      "purpose": {
+        "title": "1. Un espace strictement familial et bienveillant",
+        "body": "Ce site et son album photo ont pour unique vocation de partager l’invitation au « Voir bébé » de Daniel et de rassembler les souvenirs pris par nos proches. Aucun outil publicitaire, traceur commercial, ni système de reconnaissance faciale n’est utilisé."
+      },
+      "moderation": {
+        "title": "2. Modération systématique avant publication",
+        "body": "Aucune photo envoyée par un invité n’est publiée automatiquement. Chaque image est placée dans un espace privé en attente de validation par les parents. Seules les photos explicitement approuvées deviennent visibles dans la galerie."
+      },
+      "technical": {
+        "title": "3. Retrait des métadonnées EXIF/GPS et non-indexation",
+        "body": "Lors du traitement d’un envoi par le serveur, les métadonnées EXIF — et notamment les coordonnées GPS de géolocalisation — sont supprimées. L’album privé comporte des directives interdisant son indexation par les moteurs de recherche. Aucun nom de famille complet d’enfant n’est demandé."
+      },
+      "storage": {
+        "title": "4. Stockage et durée de conservation",
+        "body": "Les fichiers sont hébergés dans un compartiment de stockage privé et délivrés via des liens signés à durée limitée. Les parents définissent librement la durée de conservation de l’album (par défaut {{retentionDays}} jours) et peuvent supprimer à tout moment une photo et ses fichiers associés."
+      },
+      "limits": {
+        "title": "5. Précision importante sur les images affichées à l’écran",
+        "body": "Bien que le téléchargement groupé de l’album soit désactivé et que l’accès soit protégé, toute photographie visible sur un écran peut techniquement faire l’objet d’une capture d’écran ou d’une copie par un visiteur autorisé. Nous comptons sur la bienveillance de chaque proche pour ne pas rediffuser ces clichés."
+      }
+    },
+    "removalForm": {
+      "title": "Demander le retrait d’une photo",
+      "description": "Si vous apparaissez sur une photo (ou votre enfant) et souhaitez son retrait immédiat de l’album, préparez votre demande ci-dessous pour les parents via WhatsApp.",
+      "requesterNameLabel": "Votre prénom et nom *",
+      "photoRefLabel": "Référence ou description de la photo concernée *",
+      "photoRefPlaceholder": "Identifiant de la photo ou description du cliché",
+      "reasonLabel": "Précision éventuelle (facultatif)",
+      "reasonPlaceholder": "Ex. Je préfère que cette photo ne soit pas affichée dans la galerie...",
+      "submitWhatsapp": "Envoyer la demande de retrait sur WhatsApp",
+      "copyRequest": "Copier la demande",
+      "whatsappIntro": "Bonjour, je souhaite demander le retrait d’une photo de l’album du Voir bébé de Daniel."
+    }
+  },
+  "footer": {
+    "signature": "Avec amour, la famille de Daniel",
+    "eventSubtitle": "Le Voir bébé de Daniel — Un petit être, un immense bonheur.",
+    "usefulLinks": "Navigation",
+    "privacyLink": "Confidentialité & retrait photo",
+    "adminLink": "Espace parents",
+    "whatsappContact": "WhatsApp Parents"
+  }
+}

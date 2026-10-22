@@ -1,0 +1,6 @@
+{
+  "name": "Le Voir bébé de Daniel — Meet Baby Daniel",
+  "description": "Un petit être, un immense bonheur. Invitation officielle, informations pratiques, confirmation de présence et album de souvenirs pour le Voir bébé de Daniel.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
