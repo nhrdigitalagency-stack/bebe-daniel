@@ -27,14 +27,14 @@ export const Footer: React.FC = () => {
 
   const handleShareInvitation = async () => {
     const shareUrl = eventConfig.siteUrl || window.location.origin;
-    const shareTitle = t('meta.eventName');
-    const shareText = `${t('meta.eventName')} — ${t('meta.signature')}`;
+    const shareTitle = 'Bienvenue au voir bb du bébé Daniel';
+    const shareText = `Bienvenue au voir bb du bébé Daniel — ${shareUrl}`;
 
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share({
           title: shareTitle,
-          text: shareText,
+          text: 'Bienvenue au voir bb du bébé Daniel',
           url: shareUrl,
         });
         return;
@@ -43,7 +43,7 @@ export const Footer: React.FC = () => {
       }
     }
 
-    const ok = await copyTextToClipboard(shareUrl);
+    const ok = await copyTextToClipboard(shareText);
     if (ok) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2600);

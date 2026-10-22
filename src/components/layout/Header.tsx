@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Menu, X, Share2, Check } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { setAppLanguage } from '../../i18n';
 import { eventConfig } from '../../config/eventConfig';
 import { copyTextToClipboard } from '../../services/whatsappService';
@@ -45,14 +46,14 @@ export const Header: React.FC = () => {
 
   const handleShare = async () => {
     const shareUrl = eventConfig.siteUrl || window.location.origin;
-    const shareTitle = t('meta.eventName');
-    const shareText = `${t('meta.eventName')} — ${t('meta.signature')}`;
+    const shareTitle = 'Bienvenue au voir bb du bébé Daniel';
+    const shareText = `Bienvenue au voir bb du bébé Daniel — ${shareUrl}`;
 
     if (typeof navigator !== 'undefined' && navigator.share) {
       try {
         await navigator.share({
           title: shareTitle,
-          text: shareText,
+          text: 'Bienvenue au voir bb du bébé Daniel',
           url: shareUrl,
         });
         return;
@@ -61,7 +62,7 @@ export const Header: React.FC = () => {
       }
     }
 
-    const copied = await copyTextToClipboard(shareUrl);
+    const copied = await copyTextToClipboard(shareText);
     if (copied) {
       setShareCopied(true);
       setTimeout(() => setShareCopied(false), 2600);
@@ -69,9 +70,14 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-white/75 backdrop-blur-md border-b border-[#FFCCE5]/70 transition-colors">
+    <motion.header
+      initial={{ y: -24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 inset-x-0 z-50 bg-white/75 backdrop-blur-md border-b border-[#FFCCE5]/70 transition-colors"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between gap-6">
-        {/* Zone 1: Clean Typographic Brand Wordmark (No insignia/icon) */}
+        {/* Zone 1: Clean Typographic Brand Wordmark */}
         <Link
           to="/"
           className="font-display text-2xl sm:text-[28px] font-semibold tracking-tight text-[#392B33] hover:text-[#FF007F] transition-colors whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#FF007F] rounded-sm"
@@ -164,13 +170,15 @@ export const Header: React.FC = () => {
             </button>
           </div>
 
-          <button
+          <motion.button
             type="button"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             onClick={() => handleSectionLink('confirmation')}
             className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-[#FF007F] hover:bg-[#D9006C] rounded-xl transition-colors whitespace-nowrap shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FF007F]"
           >
             {t('nav.rsvpCta')}
-          </button>
+          </motion.button>
 
           {/* Mobile Hamburger Button */}
           <button
@@ -186,83 +194,89 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Accessible Mobile Menu Drawer */}
-      {mobileMenuOpen && (
-        <div
-          id="mobile-navigation-drawer"
-          className="lg:hidden bg-white/95 backdrop-blur-md border-b border-[#FFCCE5] px-4 pt-3 pb-6 space-y-3 shadow-sm"
-        >
-          <div className="flex flex-col space-y-1">
-            <button
-              type="button"
-              onClick={() => handleSectionLink('accueil')}
-              className="text-left px-3 py-2.5 rounded-lg text-sm font-medium text-[#392B33] hover:bg-[#FFF5FA]"
-            >
-              {t('nav.home')}
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSectionLink('invitation')}
-              className="text-left px-3 py-2.5 rounded-lg text-sm font-medium text-[#392B33] hover:bg-[#FFF5FA]"
-            >
-              {t('nav.invitation')}
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSectionLink('programme')}
-              className="text-left px-3 py-2.5 rounded-lg text-sm font-medium text-[#392B33] hover:bg-[#FFF5FA]"
-            >
-              {t('nav.schedule')}
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSectionLink('infos-pratiques')}
-              className="text-left px-3 py-2.5 rounded-lg text-sm font-medium text-[#392B33] hover:bg-[#FFF5FA]"
-            >
-              {t('nav.practical')}
-            </button>
-            <Link
-              to="/souvenirs"
-              className="px-3 py-2.5 rounded-lg text-sm font-medium text-[#392B33] hover:bg-[#FFF5FA]"
-            >
-              {t('nav.memories')}
-            </Link>
-            <Link
-              to="/partager-des-photos"
-              className="px-3 py-2.5 rounded-lg text-sm font-medium text-[#392B33] hover:bg-[#FFF5FA]"
-            >
-              {t('nav.sharePhotos')}
-            </Link>
-          </div>
+      {/* Accessible Mobile Menu Drawer with AnimatePresence */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            id="mobile-navigation-drawer"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
+            className="lg:hidden bg-white/95 backdrop-blur-md border-b border-[#FFCCE5] px-4 pt-3 pb-6 space-y-3 shadow-sm"
+          >
+            <div className="flex flex-col space-y-1">
+              <button
+                type="button"
+                onClick={() => handleSectionLink('accueil')}
+                className="text-left px-3 py-2.5 rounded-lg text-sm font-medium text-[#392B33] hover:bg-[#FFF5FA]"
+              >
+                {t('nav.home')}
+              </button>
+              <button
+                type="button"
+                onClick={() => handleSectionLink('invitation')}
+                className="text-left px-3 py-2.5 rounded-lg text-sm font-medium text-[#392B33] hover:bg-[#FFF5FA]"
+              >
+                {t('nav.invitation')}
+              </button>
+              <button
+                type="button"
+                onClick={() => handleSectionLink('programme')}
+                className="text-left px-3 py-2.5 rounded-lg text-sm font-medium text-[#392B33] hover:bg-[#FFF5FA]"
+              >
+                {t('nav.schedule')}
+              </button>
+              <button
+                type="button"
+                onClick={() => handleSectionLink('infos-pratiques')}
+                className="text-left px-3 py-2.5 rounded-lg text-sm font-medium text-[#392B33] hover:bg-[#FFF5FA]"
+              >
+                {t('nav.practical')}
+              </button>
+              <Link
+                to="/souvenirs"
+                className="px-3 py-2.5 rounded-lg text-sm font-medium text-[#392B33] hover:bg-[#FFF5FA]"
+              >
+                {t('nav.memories')}
+              </Link>
+              <Link
+                to="/partager-des-photos"
+                className="px-3 py-2.5 rounded-lg text-sm font-medium text-[#392B33] hover:bg-[#FFF5FA]"
+              >
+                {t('nav.sharePhotos')}
+              </Link>
+            </div>
 
-          <div className="pt-2 border-t border-[#FFCCE5] flex flex-col sm:flex-row gap-2.5">
-            <button
-              type="button"
-              onClick={() => handleSectionLink('confirmation')}
-              className="w-full py-2.5 px-4 rounded-xl bg-[#FF007F] text-white text-sm font-semibold text-center hover:bg-[#D9006C] transition-colors"
-            >
-              {t('nav.rsvpCta')}
-            </button>
-            <button
-              type="button"
-              onClick={handleShare}
-              className="w-full py-2.5 px-4 rounded-xl border border-[#FFCCE5] bg-[#FFF5FA] text-[#392B33] text-sm font-medium inline-flex items-center justify-center gap-2 hover:bg-[#FFE5F2] transition-colors"
-            >
-              {shareCopied ? (
-                <>
-                  <Check className="w-4 h-4 text-[#FF007F]" />
-                  <span>{t('nav.linkCopied')}</span>
-                </>
-              ) : (
-                <>
-                  <Share2 className="w-4 h-4 text-[#FF007F]" />
-                  <span>{t('nav.shareInvitation')}</span>
-                </>
-              )}
-            </button>
-          </div>
-        </div>
-      )}
-    </header>
+            <div className="pt-2 border-t border-[#FFCCE5] flex flex-col sm:flex-row gap-2.5">
+              <button
+                type="button"
+                onClick={() => handleSectionLink('confirmation')}
+                className="w-full py-2.5 px-4 rounded-xl bg-[#FF007F] text-white text-sm font-semibold text-center hover:bg-[#D9006C] transition-colors"
+              >
+                {t('nav.rsvpCta')}
+              </button>
+              <button
+                type="button"
+                onClick={handleShare}
+                className="w-full py-2.5 px-4 rounded-xl border border-[#FFCCE5] bg-[#FFF5FA] text-[#392B33] text-sm font-medium inline-flex items-center justify-center gap-2 hover:bg-[#FFE5F2] transition-colors"
+              >
+                {shareCopied ? (
+                  <>
+                    <Check className="w-4 h-4 text-[#FF007F]" />
+                    <span>{t('nav.linkCopied')}</span>
+                  </>
+                ) : (
+                  <>
+                    <Share2 className="w-4 h-4 text-[#FF007F]" />
+                    <span>{t('nav.shareInvitation')}</span>
+                  </>
+                )}
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 };

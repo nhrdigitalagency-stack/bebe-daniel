@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MessageCircle, Copy, Check, AlertCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useEventSettings } from '../../context/EventSettingsContext';
 import {
   AttendanceStatus,
@@ -9,6 +10,8 @@ import {
   copyTextToClipboard,
 } from '../../services/whatsappService';
 import { LottieIllustration } from '../ui/LottieIllustration';
+
+const EASE_OUT_EXPO: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export const RsvpSection: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -71,7 +74,6 @@ export const RsvpSection: React.FC = () => {
     const url = buildWhatsappUrl(text, config.whatsappNumber);
 
     setOpenedFeedback(true);
-    // Use an anchor element click with target="_blank" to open WhatsApp cleanly without window.open
     const link = document.createElement('a');
     link.href = url;
     link.target = '_blank';
@@ -94,14 +96,20 @@ export const RsvpSection: React.FC = () => {
   return (
     <section
       id="confirmation"
-      className="py-16 sm:py-24 bg-[#FFF5FA] border-b border-[#FFCCE5]"
+      className="py-16 sm:py-24 bg-[#FFF5FA] border-b border-[#FFCCE5] overflow-hidden"
     >
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-        <div className="text-center space-y-3">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
+          className="text-center space-y-3"
+        >
           <div className="flex justify-center">
             <LottieIllustration variant="subtleHearts" className="w-14 h-14" />
           </div>
-          <p className="text-xs sm:text-sm font-semibold text-[#FF007F] tracking-wide">
+          <p className="text-xs sm:text-sm font-semibold text-[#FF007F] tracking-wide uppercase">
             {t('rsvp.kicker')}
           </p>
           <h2
@@ -113,9 +121,13 @@ export const RsvpSection: React.FC = () => {
           <p className="text-sm sm:text-base text-[#75666E] max-w-xl mx-auto">
             {t('rsvp.subtitle')}
           </p>
-        </div>
+        </motion.div>
 
-        <form
+        <motion.form
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.75, ease: EASE_OUT_EXPO }}
           onSubmit={handleSubmit}
           noValidate
           className="rounded-3xl bg-[#FFFFFF] border border-[#FFCCE5] p-6 sm:p-10 space-y-6 shadow-sm"
@@ -176,9 +188,11 @@ export const RsvpSection: React.FC = () => {
               ).map((option) => {
                 const isSelected = attendance === option.value;
                 return (
-                  <button
+                  <motion.button
                     key={option.value}
                     type="button"
+                    whileHover={{ y: -2 }}
+                    whileTap={{ scale: 0.98 }}
                     role="radio"
                     aria-checked={isSelected}
                     onClick={() => setAttendance(option.value)}
@@ -189,77 +203,87 @@ export const RsvpSection: React.FC = () => {
                     }`}
                   >
                     {t(option.labelKey)}
-                  </button>
+                  </motion.button>
                 );
               })}
             </div>
           </fieldset>
 
-          {/* Conditional Guest Counts & Dietary Preferences (Hidden when attendance === 'no') */}
-          {attendance !== 'no' && (
-            <div className="space-y-6 pt-2 border-t border-[#FFCCE5]">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div className="space-y-2">
-                  <label
-                    htmlFor="rsvp-adults"
-                    className="block text-sm font-medium text-[#392B33]"
-                  >
-                    {t('rsvp.additionalAdultsLabel')}
-                  </label>
-                  <select
-                    id="rsvp-adults"
-                    value={additionalAdults}
-                    onChange={(e) => setAdditionalAdults(Number(e.target.value))}
-                    className="w-full px-4 py-3 rounded-xl border border-[#FFCCE5] bg-[#FFF5FA] text-[#392B33] text-sm focus:bg-white focus:outline-2 focus:outline-[#FF007F] tabular-nums"
-                  >
-                    {Array.from({ length: maxAdults + 1 }, (_, i) => (
-                      <option key={i} value={i}>
-                        {i}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+          {/* Conditional Guest Counts & Dietary Preferences */}
+          <AnimatePresence initial={false}>
+            {attendance !== 'no' && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="overflow-hidden"
+              >
+                <div className="space-y-6 pt-2 border-t border-[#FFCCE5]">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div className="space-y-2">
+                      <label
+                        htmlFor="rsvp-adults"
+                        className="block text-sm font-medium text-[#392B33]"
+                      >
+                        {t('rsvp.additionalAdultsLabel')}
+                      </label>
+                      <select
+                        id="rsvp-adults"
+                        value={additionalAdults}
+                        onChange={(e) => setAdditionalAdults(Number(e.target.value))}
+                        className="w-full px-4 py-3 rounded-xl border border-[#FFCCE5] bg-[#FFF5FA] text-[#392B33] text-sm focus:bg-white focus:outline-2 focus:outline-[#FF007F] tabular-nums"
+                      >
+                        {Array.from({ length: maxAdults + 1 }, (_, i) => (
+                          <option key={i} value={i}>
+                            {i}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
 
-                <div className="space-y-2">
-                  <label
-                    htmlFor="rsvp-children"
-                    className="block text-sm font-medium text-[#392B33]"
-                  >
-                    {t('rsvp.childrenLabel')}
-                  </label>
-                  <select
-                    id="rsvp-children"
-                    value={childrenCount}
-                    onChange={(e) => setChildrenCount(Number(e.target.value))}
-                    className="w-full px-4 py-3 rounded-xl border border-[#FFCCE5] bg-[#FFF5FA] text-[#392B33] text-sm focus:bg-white focus:outline-2 focus:outline-[#FF007F] tabular-nums"
-                  >
-                    {Array.from({ length: maxChildren + 1 }, (_, i) => (
-                      <option key={i} value={i}>
-                        {i}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
+                    <div className="space-y-2">
+                      <label
+                        htmlFor="rsvp-children"
+                        className="block text-sm font-medium text-[#392B33]"
+                      >
+                        {t('rsvp.childrenLabel')}
+                      </label>
+                      <select
+                        id="rsvp-children"
+                        value={childrenCount}
+                        onChange={(e) => setChildrenCount(Number(e.target.value))}
+                        className="w-full px-4 py-3 rounded-xl border border-[#FFCCE5] bg-[#FFF5FA] text-[#392B33] text-sm focus:bg-white focus:outline-2 focus:outline-[#FF007F] tabular-nums"
+                      >
+                        {Array.from({ length: maxChildren + 1 }, (_, i) => (
+                          <option key={i} value={i}>
+                            {i}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
 
-              <div className="space-y-2">
-                <label
-                  htmlFor="rsvp-dietary"
-                  className="block text-sm font-medium text-[#392B33]"
-                >
-                  {t('rsvp.dietaryLabel')}
-                </label>
-                <input
-                  id="rsvp-dietary"
-                  type="text"
-                  value={dietaryPreferences}
-                  onChange={(e) => setDietaryPreferences(e.target.value)}
-                  placeholder={t('rsvp.dietaryPlaceholder')}
-                  className="w-full px-4 py-3 rounded-xl border border-[#FFCCE5] bg-[#FFF5FA] text-[#392B33] placeholder:text-[#75666E]/60 text-sm focus:bg-white focus:outline-2 focus:outline-[#FF007F]"
-                />
-              </div>
-            </div>
-          )}
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="rsvp-dietary"
+                      className="block text-sm font-medium text-[#392B33]"
+                    >
+                      {t('rsvp.dietaryLabel')}
+                    </label>
+                    <input
+                      id="rsvp-dietary"
+                      type="text"
+                      value={dietaryPreferences}
+                      onChange={(e) => setDietaryPreferences(e.target.value)}
+                      placeholder={t('rsvp.dietaryPlaceholder')}
+                      className="w-full px-4 py-3 rounded-xl border border-[#FFCCE5] bg-[#FFF5FA] text-[#392B33] placeholder:text-[#75666E]/60 text-sm focus:bg-white focus:outline-2 focus:outline-[#FF007F]"
+                    />
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Message for Parents */}
           <div className="space-y-2">
@@ -319,16 +343,20 @@ export const RsvpSection: React.FC = () => {
           {/* Actions: Primary WhatsApp Button & Backup Copy Button */}
           <div className="space-y-3 pt-2">
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-              <button
+              <motion.button
                 type="submit"
+                whileHover={{ scale: 1.01, y: -1 }}
+                whileTap={{ scale: 0.99 }}
                 className="flex-1 inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#FF007F] hover:bg-[#D9006C] text-white text-sm sm:text-base font-semibold transition-colors cursor-pointer whitespace-nowrap shrink-0"
               >
                 <MessageCircle className="w-4 h-4 shrink-0" />
                 <span>{t('rsvp.submitWhatsapp')}</span>
-              </button>
+              </motion.button>
 
-              <button
+              <motion.button
                 type="button"
+                whileHover={{ scale: 1.01, y: -1 }}
+                whileTap={{ scale: 0.99 }}
                 onClick={handleCopyFallback}
                 className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl border border-[#FFCCE5] bg-[#FFF5FA] hover:bg-[#FFE5F2] text-[#392B33] text-sm font-medium transition-colors cursor-pointer whitespace-nowrap shrink-0"
               >
@@ -338,14 +366,14 @@ export const RsvpSection: React.FC = () => {
                   <Copy className="w-4 h-4 text-[#FF007F] shrink-0" />
                 )}
                 <span>{t('rsvp.copyFallbackButton')}</span>
-              </button>
+              </motion.button>
             </div>
 
             <p className="text-xs text-[#75666E] text-center leading-relaxed">
               {t('rsvp.whatsappDisclaimer')}
             </p>
           </div>
-        </form>
+        </motion.form>
       </div>
     </section>
   );

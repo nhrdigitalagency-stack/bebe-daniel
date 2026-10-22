@@ -9,8 +9,11 @@ import {
   Info,
   CalendarPlus,
 } from 'lucide-react';
+import { motion } from 'motion/react';
 import { useEventSettings } from '../../context/EventSettingsContext';
 import { downloadIcsFile } from '../../services/calendarService';
+
+const EASE_OUT_EXPO: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export const SchedulePracticalSection: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -112,12 +115,18 @@ export const SchedulePracticalSection: React.FC = () => {
   );
 
   return (
-    <div className="bg-[#FFF5FA] border-b border-[#FFCCE5]">
+    <div className="bg-[#FFF5FA] border-b border-[#FFCCE5] overflow-hidden">
       {/* Part 1: Schedule (#programme) */}
       <section id="programme" className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         <div className="space-y-8">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <p className="text-xs sm:text-sm font-semibold text-[#FF007F] tracking-wide">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
+            className="text-center max-w-2xl mx-auto space-y-3"
+          >
+            <p className="text-xs sm:text-sm font-semibold text-[#FF007F] tracking-wide uppercase">
               {t('schedule.kicker')}
             </p>
             <h2
@@ -131,20 +140,41 @@ export const SchedulePracticalSection: React.FC = () => {
                 {t('schedule.unconfirmedNotice')} · {t('schedule.unconfirmedSubtext')}
               </p>
             )}
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.12 },
+              },
+            }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
             {config.schedule.map((item, idx) => (
-              <div
+              <motion.div
                 key={item.id}
-                className="rounded-2xl bg-[#FFFFFF] border border-[#FFCCE5] p-6 flex flex-col justify-between space-y-4"
+                variants={{
+                  hidden: { opacity: 0, y: 24 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 0.65, ease: EASE_OUT_EXPO },
+                  },
+                }}
+                whileHover={{ y: -5, transition: { duration: 0.22 } }}
+                className="rounded-2xl bg-[#FFFFFF] border border-[#FFCCE5] p-6 flex flex-col justify-between space-y-4 shadow-xs hover:shadow-md transition-shadow"
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-xs text-[#75666E] tabular-nums">
-                    <span className="font-semibold text-[#FF007F]">
+                    <span className="font-semibold text-[#FF007F] px-2.5 py-0.5 rounded-md bg-[#FFE5F2]">
                       0{idx + 1}
                     </span>
-                    <span>
+                    <span className="font-medium">
                       {item.time && item.time.trim().length > 0
                         ? item.time
                         : t('practical.toBeConfirmed')}
@@ -157,9 +187,9 @@ export const SchedulePracticalSection: React.FC = () => {
                     {t(item.descriptionKey)}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -169,8 +199,14 @@ export const SchedulePracticalSection: React.FC = () => {
         className="py-16 sm:py-24 border-t border-[#FFCCE5] bg-[#FFFFFF]"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <p className="text-xs sm:text-sm font-semibold text-[#FF007F] tracking-wide">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
+            className="text-center max-w-2xl mx-auto space-y-3"
+          >
+            <p className="text-xs sm:text-sm font-semibold text-[#FF007F] tracking-wide uppercase">
               {t('practical.kicker')}
             </p>
             <h2
@@ -182,11 +218,30 @@ export const SchedulePracticalSection: React.FC = () => {
             <p className="text-sm sm:text-base text-[#75666E]">
               {t('practical.subtitle')}
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1 },
+              },
+            }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
             {/* Date Card */}
-            <div className="rounded-2xl bg-[#FFF5FA] border border-[#FFCCE5] p-6 space-y-2">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_OUT_EXPO } },
+              }}
+              whileHover={{ y: -4 }}
+              className="rounded-2xl bg-[#FFF5FA] border border-[#FFCCE5] p-6 space-y-2 transition-shadow hover:shadow-md"
+            >
               <div className="flex items-center gap-2.5 text-[#FF007F]">
                 <Calendar className="w-5 h-5 shrink-0" />
                 <span className="text-xs font-semibold tracking-wide text-[#75666E]">
@@ -196,10 +251,17 @@ export const SchedulePracticalSection: React.FC = () => {
               <p className="font-display text-2xl font-semibold text-[#392B33] capitalize">
                 {formattedDate || t('practical.toBeConfirmed')}
               </p>
-            </div>
+            </motion.div>
 
             {/* Time Card */}
-            <div className="rounded-2xl bg-[#FFF5FA] border border-[#FFCCE5] p-6 space-y-2">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_OUT_EXPO } },
+              }}
+              whileHover={{ y: -4 }}
+              className="rounded-2xl bg-[#FFF5FA] border border-[#FFCCE5] p-6 space-y-2 transition-shadow hover:shadow-md"
+            >
               <div className="flex items-center gap-2.5 text-[#FF007F]">
                 <Clock className="w-5 h-5 shrink-0" />
                 <span className="text-xs font-semibold tracking-wide text-[#75666E]">
@@ -209,10 +271,17 @@ export const SchedulePracticalSection: React.FC = () => {
               <p className="font-display text-2xl font-semibold text-[#392B33] tabular-nums">
                 {formattedTime || t('practical.toBeConfirmed')}
               </p>
-            </div>
+            </motion.div>
 
             {/* Venue & Address Card */}
-            <div className="rounded-2xl bg-[#FFF5FA] border border-[#FFCCE5] p-6 space-y-2">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_OUT_EXPO } },
+              }}
+              whileHover={{ y: -4 }}
+              className="rounded-2xl bg-[#FFF5FA] border border-[#FFCCE5] p-6 space-y-2 transition-shadow hover:shadow-md"
+            >
               <div className="flex items-center gap-2.5 text-[#FF007F]">
                 <MapPin className="w-5 h-5 shrink-0" />
                 <span className="text-xs font-semibold tracking-wide text-[#75666E]">
@@ -225,10 +294,17 @@ export const SchedulePracticalSection: React.FC = () => {
               <p className="text-sm font-medium text-[#FF007F]">
                 {config.address?.trim() || 'Yaoundé, Simbock'}
               </p>
-            </div>
+            </motion.div>
 
-            {/* Optional Dress Code Card */}
-            <div className="rounded-2xl bg-[#FFF5FA] border border-[#FFCCE5] p-6 space-y-2">
+            {/* Dress Code Card */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_OUT_EXPO } },
+              }}
+              whileHover={{ y: -4 }}
+              className="rounded-2xl bg-[#FFF5FA] border border-[#FFCCE5] p-6 space-y-2 transition-shadow hover:shadow-md"
+            >
               <div className="flex items-center gap-2.5 text-[#FF007F]">
                 <Heart className="w-5 h-5 shrink-0" />
                 <span className="text-xs font-semibold tracking-wide text-[#75666E]">
@@ -238,11 +314,18 @@ export const SchedulePracticalSection: React.FC = () => {
               <p className="font-display text-xl font-semibold text-[#392B33]">
                 {config.dressCode?.trim() || t('practical.toBeConfirmed')}
               </p>
-            </div>
+            </motion.div>
 
-            {/* Optional Access Notes Card */}
+            {/* Access Notes Card */}
             {config.accessNotes && config.accessNotes.trim().length > 0 && (
-              <div className="rounded-2xl bg-[#FFF5FA] border border-[#FFCCE5] p-6 space-y-2 sm:col-span-2">
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: EASE_OUT_EXPO } },
+                }}
+                whileHover={{ y: -4 }}
+                className="rounded-2xl bg-[#FFF5FA] border border-[#FFCCE5] p-6 space-y-2 sm:col-span-2 transition-shadow hover:shadow-md"
+              >
                 <div className="flex items-center gap-2.5 text-[#FF007F]">
                   <Info className="w-5 h-5 shrink-0" />
                   <span className="text-xs font-semibold tracking-wide text-[#75666E]">
@@ -252,22 +335,30 @@ export const SchedulePracticalSection: React.FC = () => {
                 <p className="text-sm sm:text-base text-[#392B33] leading-relaxed">
                   {config.accessNotes}
                 </p>
-              </div>
+              </motion.div>
             )}
-          </div>
+          </motion.div>
 
           {/* Action Buttons: Directions & .ICS Calendar */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 pt-2">
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.65, ease: EASE_OUT_EXPO }}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 pt-2"
+          >
             {hasDirections ? (
-              <a
+              <motion.a
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
                 href={directionsHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#FF007F] hover:bg-[#D9006C] text-white text-sm font-semibold transition-colors whitespace-nowrap shrink-0"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#FF007F] hover:bg-[#D9006C] text-white text-sm font-semibold transition-colors whitespace-nowrap shrink-0 shadow-xs"
               >
                 <Navigation className="w-4 h-4 shrink-0" />
                 <span>{t('practical.openDirections')}</span>
-              </a>
+              </motion.a>
             ) : (
               <button
                 type="button"
@@ -281,14 +372,16 @@ export const SchedulePracticalSection: React.FC = () => {
             )}
 
             {canDownloadCalendar ? (
-              <button
+              <motion.button
                 type="button"
+                whileHover={{ scale: 1.02, y: -2 }}
+                whileTap={{ scale: 0.98 }}
                 onClick={handleDownloadIcs}
                 className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl border border-[#FFCCE5] bg-[#FFF5FA] hover:bg-[#FFE5F2] text-[#392B33] text-sm font-medium transition-colors cursor-pointer whitespace-nowrap shrink-0"
               >
                 <CalendarPlus className="w-4 h-4 shrink-0 text-[#FF007F]" />
                 <span>{t('practical.addToCalendar')}</span>
-              </button>
+              </motion.button>
             ) : (
               <button
                 type="button"
@@ -300,7 +393,7 @@ export const SchedulePracticalSection: React.FC = () => {
                 <span>{t('practical.calendarUnavailable')}</span>
               </button>
             )}
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

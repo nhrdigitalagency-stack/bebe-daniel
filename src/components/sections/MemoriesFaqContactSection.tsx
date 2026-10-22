@@ -10,12 +10,15 @@ import {
   Check,
   AlertCircle,
 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useEventSettings } from '../../context/EventSettingsContext';
 import {
   buildContactWhatsappMessage,
   buildWhatsappUrl,
   copyTextToClipboard,
 } from '../../services/whatsappService';
+
+const EASE_OUT_EXPO: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export const MemoriesFaqContactSection: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -85,14 +88,20 @@ export const MemoriesFaqContactSection: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#FFFFFF]">
+    <div className="bg-[#FFFFFF] overflow-hidden">
       {/* Section 1: Souvenirs Preview (#souvenirs) */}
       <section
         id="souvenirs"
         className="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-[#FFCCE5]"
       >
-        <div className="rounded-3xl bg-[#FFF5FA] border border-[#FFCCE5] p-8 sm:p-12 lg:p-16 text-center max-w-4xl mx-auto space-y-6">
-          <p className="text-xs sm:text-sm font-semibold text-[#FF007F] tracking-wide">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.75, ease: EASE_OUT_EXPO }}
+          className="rounded-3xl bg-[#FFF5FA] border border-[#FFCCE5] p-8 sm:p-12 lg:p-16 text-center max-w-4xl mx-auto space-y-6 shadow-xs"
+        >
+          <p className="text-xs sm:text-sm font-semibold text-[#FF007F] tracking-wide uppercase">
             {t('memoriesPreview.kicker')}
           </p>
           <h2
@@ -110,7 +119,7 @@ export const MemoriesFaqContactSection: React.FC = () => {
           <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
             <Link
               to="/souvenirs"
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#FF007F] hover:bg-[#D9006C] text-white text-sm sm:text-base font-semibold transition-colors whitespace-nowrap shrink-0"
+              className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-[#FF007F] hover:bg-[#D9006C] text-white text-sm sm:text-base font-semibold transition-all hover:-translate-y-0.5 whitespace-nowrap shrink-0 shadow-xs"
             >
               <Images className="w-4 h-4 shrink-0" />
               <span>{t('memoriesPreview.viewGalleryCta')}</span>
@@ -118,7 +127,7 @@ export const MemoriesFaqContactSection: React.FC = () => {
 
             <Link
               to="/partager-des-photos"
-              className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl border border-[#FFCCE5] bg-[#FFFFFF] hover:bg-[#FFE5F2] text-[#392B33] text-sm sm:text-base font-medium transition-colors whitespace-nowrap shrink-0"
+              className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl border border-[#FFCCE5] bg-[#FFFFFF] hover:bg-[#FFE5F2] text-[#392B33] text-sm sm:text-base font-medium transition-all hover:-translate-y-0.5 whitespace-nowrap shrink-0"
             >
               <Camera className="w-4 h-4 shrink-0 text-[#FF007F]" />
               <span>{t('memoriesPreview.addPhotosCta')}</span>
@@ -128,7 +137,7 @@ export const MemoriesFaqContactSection: React.FC = () => {
           <p className="text-xs text-[#75666E] pt-2">
             {t('memoriesPreview.privacyBadge')}
           </p>
-        </div>
+        </motion.div>
       </section>
 
       {/* Section 2: FAQ Accordion (#faq) */}
@@ -136,8 +145,14 @@ export const MemoriesFaqContactSection: React.FC = () => {
         id="faq"
         className="py-16 sm:py-24 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 border-b border-[#FFCCE5] space-y-10"
       >
-        <div className="text-center space-y-3">
-          <p className="text-xs sm:text-sm font-semibold text-[#FF007F] tracking-wide">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
+          className="text-center space-y-3"
+        >
+          <p className="text-xs sm:text-sm font-semibold text-[#FF007F] tracking-wide uppercase">
             {t('faq.kicker')}
           </p>
           <h2
@@ -146,7 +161,7 @@ export const MemoriesFaqContactSection: React.FC = () => {
           >
             {t('faq.title')}
           </h2>
-        </div>
+        </motion.div>
 
         <div className="space-y-3">
           {Array.isArray(faqItems) &&
@@ -155,8 +170,12 @@ export const MemoriesFaqContactSection: React.FC = () => {
               const panelId = `faq-panel-${idx}`;
               const btnId = `faq-btn-${idx}`;
               return (
-                <div
+                <motion.div
                   key={idx}
+                  initial={{ opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: idx * 0.06, ease: EASE_OUT_EXPO }}
                   className="rounded-2xl border border-[#FFCCE5] bg-[#FFF5FA] overflow-hidden"
                 >
                   <button
@@ -171,22 +190,30 @@ export const MemoriesFaqContactSection: React.FC = () => {
                       {item.q}
                     </span>
                     <ChevronDown
-                      className={`w-5 h-5 text-[#FF007F] shrink-0 transition-transform duration-150 ${
+                      className={`w-5 h-5 text-[#FF007F] shrink-0 transition-transform duration-200 ${
                         isOpen ? 'rotate-180' : ''
                       }`}
                     />
                   </button>
-                  {isOpen && (
-                    <div
-                      id={panelId}
-                      role="region"
-                      aria-labelledby={btnId}
-                      className="px-6 pb-5 pt-1 text-sm sm:text-base text-[#75666E] leading-relaxed border-t border-[#FFCCE5]/60 bg-white"
-                    >
-                      {item.a}
-                    </div>
-                  )}
-                </div>
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        id={panelId}
+                        role="region"
+                        aria-labelledby={btnId}
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        className="overflow-hidden border-t border-[#FFCCE5]/60 bg-white"
+                      >
+                        <div className="px-6 pb-5 pt-3 text-sm sm:text-base text-[#75666E] leading-relaxed">
+                          {item.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
               );
             })}
         </div>
@@ -197,8 +224,14 @@ export const MemoriesFaqContactSection: React.FC = () => {
         id="contact"
         className="py-16 sm:py-24 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8"
       >
-        <div className="text-center space-y-3">
-          <p className="text-xs sm:text-sm font-semibold text-[#FF007F] tracking-wide">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
+          className="text-center space-y-3"
+        >
+          <p className="text-xs sm:text-sm font-semibold text-[#FF007F] tracking-wide uppercase">
             {t('contact.kicker')}
           </p>
           <h2
@@ -210,12 +243,16 @@ export const MemoriesFaqContactSection: React.FC = () => {
           <p className="text-sm sm:text-base text-[#75666E]">
             {t('contact.description')}
           </p>
-        </div>
+        </motion.div>
 
-        <form
+        <motion.form
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
           onSubmit={handleContactWhatsapp}
           noValidate
-          className="rounded-2xl bg-[#FFF5FA] border border-[#FFCCE5] p-6 sm:p-8 space-y-5"
+          className="rounded-2xl bg-[#FFF5FA] border border-[#FFCCE5] p-6 sm:p-8 space-y-5 shadow-xs"
         >
           <div className="space-y-2">
             <label
@@ -270,16 +307,20 @@ export const MemoriesFaqContactSection: React.FC = () => {
           )}
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-            <button
+            <motion.button
               type="submit"
+              whileHover={{ scale: 1.01, y: -1 }}
+              whileTap={{ scale: 0.99 }}
               className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#FF007F] hover:bg-[#D9006C] text-white text-sm font-semibold transition-colors cursor-pointer whitespace-nowrap shrink-0"
             >
               <MessageCircle className="w-4 h-4 shrink-0" />
               <span>{t('contact.sendWhatsappCta')}</span>
-            </button>
+            </motion.button>
 
-            <button
+            <motion.button
               type="button"
+              whileHover={{ scale: 1.01, y: -1 }}
+              whileTap={{ scale: 0.99 }}
               onClick={handleCopyContact}
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border border-[#FFCCE5] bg-white hover:bg-[#FFE5F2] text-[#392B33] text-sm font-medium transition-colors cursor-pointer whitespace-nowrap shrink-0"
             >
@@ -289,13 +330,13 @@ export const MemoriesFaqContactSection: React.FC = () => {
                 <Copy className="w-4 h-4 text-[#FF007F] shrink-0" />
               )}
               <span>{t('contact.copyMessageCta')}</span>
-            </button>
+            </motion.button>
           </div>
 
           <p className="text-xs text-[#75666E] text-center pt-1">
             {t('contact.directPhoneLabel')} {config.whatsappDisplayNumber}
           </p>
-        </form>
+        </motion.form>
       </section>
     </div>
   );
